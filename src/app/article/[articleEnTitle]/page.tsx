@@ -3,13 +3,15 @@ import prisma from "../../../../lib/db";
 import { Prisma } from "@prisma/client";
 import { JSX } from "react";
 
-type Params = Promise<{ articleEnTitle: string }>;
+type Props = {
+  params: Promise<{ articleEnTitle: string }>;
+};
 
-export default async function getArticle(params: Params): Promise<JSX.Element> {
+export default async function getArticle(props: Props): Promise<JSX.Element> {
   try {
     const article = await prisma.article.findFirstOrThrow({
       where: {
-        en_title: (await params).articleEnTitle,
+        en_title: (await props.params).articleEnTitle,
       },
     });
     const html = marked.parse(article.article_text);
