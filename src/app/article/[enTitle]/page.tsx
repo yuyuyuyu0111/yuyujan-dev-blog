@@ -4,14 +4,14 @@ import { Prisma } from "@prisma/client";
 import { JSX } from "react";
 
 type Props = {
-  params: Promise<{ articleEnTitle: string }>;
+  params: Promise<{ enTitle: string }>;
 };
 
 export default async function getArticle(props: Props): Promise<JSX.Element> {
   try {
     const article = await prisma.article.findFirstOrThrow({
       where: {
-        en_title: (await props.params).articleEnTitle,
+        en_title: (await props.params).enTitle,
       },
     });
     const html = marked.parse(article.article_text);
