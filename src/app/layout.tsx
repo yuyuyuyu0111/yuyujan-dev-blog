@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 import Link from "next/link";
+import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,11 +31,14 @@ export default function RootLayout({
             <Link href="/" style={{ margin: "0 10px" }}>
               ホーム
             </Link>
-            <Link href="/articles" style={{ margin: "0 10px" }}>
+            {/* <Link href="/articles" style={{ margin: "0 10px" }}>
               記事一覧
-            </Link>
+            </Link> */}
             <Link href="/tags" style={{ margin: "0 10px" }}>
               タグ一覧
+            </Link>{" "}
+            <Link href="/about" style={{ margin: "0 10px" }}>
+              yuyujan.devについて
             </Link>
           </nav>
         </header>
