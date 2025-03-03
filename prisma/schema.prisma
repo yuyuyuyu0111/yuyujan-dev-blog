@@ -5,7 +5,8 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-    provider = "prisma-client-js"
+    provider        = "prisma-client-js"
+    previewFeatures = ["typedSql"]
 }
 
 datasource db {
@@ -31,8 +32,8 @@ model Tag {
 
 model Article_tag_relation {
     relation_id       Int     @id @default(autoincrement())
-    article_id        Article @relation(fields: [articleArticle_id], references: [article_id])
+    article           Article @relation(fields: [articleArticle_id], references: [article_id])
     articleArticle_id Int
-    tag_id            Tag     @relation(fields: [tagTag_id], references: [tag_id])
+    tag               Tag     @relation(fields: [tagTag_id], references: [tag_id])
     tagTag_id         Int
 }
