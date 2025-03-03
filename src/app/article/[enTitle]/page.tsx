@@ -16,7 +16,16 @@ export default async function getArticle(props: Props): Promise<JSX.Element> {
       },
     });
 
-    return <Markdown remarkPlugins={[remarkGfm]}>{article.article_text}</Markdown>;
+    return (
+      <div>
+        <div className="title">
+          <h1>{article.jp_title}</h1>
+        </div>
+        <div className="markdown">
+          <Markdown remarkPlugins={[remarkGfm]}>{article.article_text}</Markdown>
+        </div>
+      </div>
+    );
   } catch (error) {
     if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2025") {
       return <div>Article not found</div>;

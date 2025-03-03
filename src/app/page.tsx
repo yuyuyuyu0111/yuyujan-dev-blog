@@ -9,7 +9,7 @@ export default async function getArticles() {
   const articles = await prisma.article.findMany();
 
   const listItems = articles.map((a, index) => (
-    <div key={index} style={{ border: "1px solid #fff", padding: "10px", margin: "5px" }}>
+    <div key={index} style={{ border: "1px solid #0ff", padding: "10px", margin: "5px" }}>
       <Link href={`/article/${a.en_title}`}>
         {a.jp_title} - {a.en_title}
       </Link>
@@ -17,5 +17,3 @@ export default async function getArticles() {
   ));
   return listItems;
 }
-// 0.5日ごとに再検証（TTL = 60*60*24*1秒）
-export const revalidate = 60 * 60 * 24 * 0.5;
